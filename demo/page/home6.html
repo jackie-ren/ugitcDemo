@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>考试试卷设计</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="../js/extends.js"></script>
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<style type="text/css">
+		body{background: #1227bd;}
+		.theme{width:980px; margin: auto;background: -webkit-linear-gradient(left,#1025bccf,#90b7f1,#1025bccf);}
+		.item{padding-left:10px;}
+		.option-group .item{padding-left:10px; display: inline-block;vertical-align:middle;}
+		.option-group .item label{display: block;padding:5px 10px;}
+		.option-group .item label input{vertical-align: middle; margin-left: 5px;}
+		.option-group .item label img{width:200px;height:100px;display: inline-block;background:#ccc; vertical-align: middle;}
+	</style>
+</head>
+<body>
+	<div class="theme">
+		<form>
+			<div class="group">
+				<h1>1.选择题</h1>
+				<div class="item">
+					<p>1.计算3+4=?()</p>
+					<div class="option-group">
+						<div class="item">
+							<label>A.<input type="radio" name="codeId1" value="A">选项A</label>
+						</div>
+						<div class="item">
+							<label>B.<input type="radio" name="codeId1" value="B">选项B</label>
+						</div>
+						<div class="item">
+							<label>C.<input type="radio" name="codeId1" value="C">选项C</label>
+						</div>
+						<div class="item">
+							<label>D.<input type="radio" name="codeId1" value="D">选项D</label>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<p>2.计算3+4=?()</p>
+					<div class="option-group">
+						<div class="item">
+							<label>A.<input type="radio" name="codeId2" value="A">选项A</label>
+						</div>
+						<div class="item">
+							<label>B.<input type="radio" name="codeId2" value="B">选项B</label>
+						</div>
+						<div class="item">
+							<label>C.<input type="radio" name="codeId2" value="C">选项C</label>
+						</div>
+						<div class="item">
+							<label>D.<input type="radio" name="codeId2" value="D">选项D</label>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<p>2.计算3+4=?()</p>
+					<div class="option-group">
+						<div class="item">
+							<label>A.<input type="radio" name="codeId3" value="A"><img src="" alt=""></label>
+						</div>
+						<div class="item">
+							<label>B.<input type="radio" name="codeId3" value="B"><img src="" alt=""></label>
+						</div>
+						<div class="item">
+							<label>C.<input type="radio" name="codeId3" value="C"><img src="" alt=""></label>
+						</div>
+						<div class="item">
+							<label>D.<input type="radio" name="codeId3" value="D"><img src="" alt=""></label>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<p>2.计算3+4=?()</p>
+					<div class="option-group">
+						<div class="item">
+							<label>A.<input type="checkbox" name="codeId4" value="A"><img src="" alt=""></label>
+						</div>
+						<div class="item">
+							<label>B.<input type="checkbox" name="codeId4" value="B"><img src="" alt=""></label>
+						</div>
+						<div class="item">
+							<label>C.<input type="checkbox" name="codeId4" value="C"><img src="" alt=""></label>
+						</div>
+						<div class="item">
+							<label>D.<input type="checkbox" name="codeId4" value="D"><img src="" alt=""></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center; padding: 5px 30px;">
+				<input style="padding: 5px 20px;" type="button" value="提交">
+			</div>
+		</form>
+		
+	</div>
+</body>
+<script type="text/javascript">
+	var data=[
+		{
+			module:"选择题",
+			codeId:"试题编号",
+			score:"分值",
+			img:"图片路径",
+			data:[
+				{
+					a:"第一题",
+					codeId:"试题编号",
+					score:"分值",
+					img:"图片路径",
+					options:[
+						{
+							option:"A",
+							value:"value",
+							type:"radio",
+							showType:"text||img",
+							img:"img"
+						},
+						{
+							option:"B",
+							value:"value",
+							type:"radio",
+							showType:"text||img",
+							img:"img"
+						},
+						{
+							option:"C",
+							value:"value",
+							type:"radio",
+							showType:"text||img",
+							img:"img"
+						},
+						{
+							option:"D",
+							value:"value",
+							type:"radio",
+							showType:"text||img",
+							img:"img"
+						}
+					]
+				}
+			]
+		},{
+			module:"多选题",
+			codeId:"试题编号",
+			score:"分值",
+			img:"图片路径",
+			data:[
+				{
+					a:"第一题",
+					img:"img",
+					options:[
+						{
+							option:"a",
+							value:"value",
+							type:"cobox",
+							showType:"text||img",
+							img:"img"
+						}
+					]
+				}
+			]
+		}
+		];
+</script>
+</html>

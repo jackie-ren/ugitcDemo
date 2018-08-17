@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		.down{ color:#000;height: 30px; font-size: 16px;}
+	</style>
+</head>
+<body>
+<div id="down" class="down">
+	
+</div>
+</body>
+<script type="text/javascript">
+	(function(){
+		var date=new Date();
+		var minute=date.getMinutes();
+		console.log(minute);
+		var count=16;
+		var setTime="";
+		var $down=$(".down");
+		function countDown(count){
+			if(minute==0&&count==0){
+				alert("时间到");
+				// setTimeout(function(){alert("shijiandao")},200)
+			}else{
+				if(count==0){
+					minute--;
+					count=60;
+				}
+				count--;
+				var Down=count;
+				var str="剩余"+minute+"分钟"+Down+"秒";
+				$down.text(str);
+				setTime=setTimeout(function(){countDown(count)},1000)
+			}
+		}
+		countDown(count);
+
+	})();
+</script>
+</html>

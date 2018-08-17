@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<style type="text/css" media="screen">
+		/*定义全局变量*/
+		:root{
+			--color:#fff;
+		}
+		.test{border:1px solid green;}
+		/*如果P元素是第一个,并且是倒数第三个,颜色设置为green*/
+		.test p:first-child:nth-last-child(3),.test p:first-child:nth-last-child(3)~p {
+			color:green;
+			background:var(--color);
+		}
+		.test p:nth-last-of-type(2):after {color:red; content:""; width:2px; height:100%;background:green;}
+		.test p{ background-color: var(--color);}
+	</style>
+</head>
+<body>
+<div class="test">
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+</div>
+<div class="test">
+    <p>text</p>
+    <p>text</p>
+</div>
+<div class="test">
+	<p>text</p>
+</div>
+</body>
+<script type="text/javascript">
+	//策略模式
+	var names={
+		zhangshan:"张三",
+		lisi:"李四"
+	};
+	var values=names;
+	names.wangwu="王五"
+	function logName(name){
+		console.log(names[name]);
+	};
+	logName("zhangshan");
+	console.log(values["wangwu"]);
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="../css/ugitc.css">
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<style type="text/css">
+		html{height: 100%;}
+		body{background: -webkit-linear-gradient(left top,#1025bc,#90b7f1,#1025bc);}
+		.login{width: 370px; height: 260px;background:rgba(255,255,255,.2); padding-left: 20px;border-radius:10px; margin:150px auto;}
+		.log{padding:40px 0px 0px 10px;}
+		.login label{width: 90px; display: inline-block; text-align: right; padding-right: 20px;vertical-align: middle;}
+		.login .name,.login .pwd,.login .type{padding: 10px 5px; font-size: 14px;}
+		.text{padding: 5px; line-height: 14px;width: 220px;font-size: 12px;border-radius:4px;box-sizing: #ccc 0px 0px 5px;border:1px solid #ccc;}
+		.login select{font-size: 12px; padding: 4px; border-radius:4px; color:#aaa;}
+		.login input.submit{padding: 6px 20px; border: none;font-weight: bold;color:#fff;margin:25px 0 0 150px;border-radius:5px;box-sizing: #ccc 0 0 5px;background: rgba(65,109,236,.8);cursor:pointer;}
+		.login input.submit:hover{background: rgba(65,109,236,1);}
+		.login input.submit:focus{outline: none;}
+	</style>
+</head>
+<body>
+	<div class="login">
+		<div class="log">
+			<div class="name">
+				<label>用户名</label>
+				<input class="text" type="text" name="name" placeholder="用户名">
+			</div>
+			<div class="pwd">
+				<label>密 码</label>
+				<input class="text" type="password" name="password" placeholder="密码">
+			</div>
+			<div class="type">
+				<label>类 型</label>
+				<select name="select">
+					<option value="">学员</option>
+					<option value="">管理</option>
+				</select>
+			</div>
+			<div class="submit">
+				<input class="submit" type="submit" value="登录">
+			</div>
+		</div>
+	</div>
+</body> 
+</html>

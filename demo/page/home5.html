@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加试题</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/ugitc.css"/>
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="../js/nicEdit.js"></script>
+	<style type="text/css">
+		input::-ms-clear { display: none;}
+		input::-ms-reveal { display: none;}
+		.td0{width:100px;text-align:right;}
+		.td0:after{content: ": ";font-weight: bold;}
+		td{border: 0px solid #ccc;}
+		select{width: 200px; font-size: 14px; height: 30px;}
+		.shezhi{display: block; padding-left: 5px;}
+		a{background: #ccc; padding: 5px 10px; text-decoration:none; display: inline-block;}
+		.items{padding-left: 5px;}
+		.item{font-size: 0px; margin-top: 5px;}
+		.item:last-child{margin-bottom: 5px;}
+		label{width:30px; display: inline-block; font-size: 0px;}
+		.option{width: 15px; font-size: 14px;}
+		.option:after{content: ": ";}
+		.textInput{font-size: 12px; height: 30px; font-size: 14px; padding-right: 30px;}
+		.btn-x{display: inline-block; background: #ccc; padding: 0px 5px; font-size: 14px; position: absolute; width: 10px; height: 34px;line-height: 30px; margin-left: -20px;}
+		.btn-x:hover{color:red; background: #ddd; cursor:pointer;}
+		.btn-x:active{color:green;}
+
+		/*判断题选项样式*/
+		.judge label{width: 200px;}
+		.judge label span{font-size: 14px;}
+	</style>
+</head>
+<body>
+	<div class="questions">
+		<div class="">
+			<h1>新增题目</h1>
+			<form>
+				<table style="width: 800px;">
+					<tbody>
+						<tr>
+							<td class="td0">题目类型</td>
+							<td>
+								<select class="testType" name="testType">
+									<option value="">请选择题型</option>
+									<option value="1">单选题</option>
+									<option value="2">多选题</option>
+									<option value="3">判断题</option>
+								</select>
+							</td>
+							<td class="td0">所属题库</td>
+							<td>
+								<select name="test">
+									<option value="1">测试库</option>}
+									<option value="2">开发库</option>}
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td class="td0">试题状态</td>
+							<td>
+								<select name="#">
+									<<option value="">开放</option>}
+									<<option value="">不开放</option>}
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="td0">试题题干</td>
+							<td colspan="3">
+								<textarea id="myArea1" name="area1" cols="110" style="height:50px; width: 100%;"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td0">答案设置</td>
+							<td>
+								<div class="lump_items">
+									<div class="judge">
+										
+									</div>
+									<div class="radioOrChencbox">
+										
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(".testType").change(function(){
+		var val=this.value;
+		addOpts.type=addOpts.types[val];
+		addOpts.init(val);
+	});
+	$(".radioOrChencbox").on("click",".btn-x",function(){
+		$(this).closest(".item").remove();
+		addOpts.reset();
+	});
+	
+	var addOpts={
+		parentClass:"radioOrChencbox",
+		type:"radio",
+		class:"option",
+		types:{"1":"radio","2":"checkbox"},
+		isJudge:false,
+		isImg:false,
+		option:["A","B","C","D","E","F","G"],
+		judges:[{A:"正确",B:"错误"}],
+		count:0,
+		add:function(element){
+			this.createDOM();
+			this.reset();
+		},
+		createDOM:function(){
+			if(this.count==this.option.length){
+				alert("已经是最大数量选项!");
+				return false;
+			}
+			var _this=this;
+			var $parent=$("."+this.parentClass);
+			if(!$parent.children().length){
+
+				var $a=$("<a class=\"addOption\" href=\"javascript:;\">添加选项</a>");
+					$a.click(function(){
+						_this.add();
+					});
+				$parent.append($a);
+			}
+			var name="name";
+			var str="<div class='item'>";
+			str+="<label><input type='"+this.type+"' name='"+name+"' value='A'><span class='"+this.class+"'>A</span></label>";
+			str+="<input class='textInput' type='text' name='"+name+"'><span class='btn-x'>X</span>";
+			$("."+this.parentClass).append(str);
+		},
+		createJudge:function(){
+			var str="";
+			for(var i=0;i<this.judges.length;i++){
+				var jude=this.judges[i];
+				for(var key in jude){
+					var opt=key;
+					str+="<div class=''><label><input type='radio' name='judge' value='"+key+"'><span class='option'>"+key+"</span><input type='hidden' name='' value='"+jude[key]+"'><span>"+jude[key]+"</span></label></div>";
+				}
+			}
+			$(".judge").append(str);
+
+		},
+		reset:function(element){
+			//获取元素类名称
+			var type=this.parentClass;
+			// 获取当前元素所有子节点
+			var options=$("."+type).children(".item");
+			this.count=options.length;
+			// 循环重置选项值
+			$.each(options,function(index,value){
+				var _this=this;
+				var option=$(_this).find(".option");
+				option.text(addOpts.option[index]).prev().val(addOpts.option[index]);
+				$(option).prev("input").val(addOpts.option[index]);
+			});
+		},
+		removeOption:function(){
+			$("."+this.parentClass).children().remove();
+			$(".judge").children().remove();
+		},
+		init:function(type){
+			this.removeOption();
+			if(!type){
+				return;
+			}
+			if(this.isJudge || !this.type){
+				this.createJudge();
+			}else{
+				this.createDOM();
+				this.reset();
+			}
+		}
+	}
+	new nicEditor({fullPanel : true}).panelInstance('myArea1',{hasPanel : true});
+	
+</script>
+</html>

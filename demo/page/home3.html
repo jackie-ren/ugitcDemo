@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="ugang" id="ng-app">
+<head>
+	<title>后台布局设计</title>
+	<link rel="stylesheet" type="text/css" href="./../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="./../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="./../css/reset.css">
+	<script type="text/javascript" src="./../jquery.min.js"></script>
+	<script type="text/javascript" src="./../js/extends.js"></script>
+	<script type="text/javascript" src="./../jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="./../js/angular.js"></script>
+	<script type="text/javascript" src="./../js/ugitcMain.js"></script>
+
+	<<style type="text/css" media="screen">
+		.test{display: none;position:absolute; width: 100px; z-index: 99999;background: #ccc; padding:5px;}
+		.test p{ border:1px solid red; margin:0px;}
+		.test p:hover{background:green;}
+
+		.menu{background-color:rgba(0, 128, 0, .7); width:100%;height:100%; border:0; padding:0;}
+		.menu>div{color:#ccc;}
+		.menu .group{background:green; }
+		.menu .group p{height:31px;line-height: 31px;padding-left:20px; border-bottom:1px solid #ccc;}
+		.menu .group p:hover{background:red;}
+		.menu .group ul{display: block;padding-left:0px;}
+		.menu .group li{height:31px;line-height: 31px;padding-left:40px;border-bottom:1px solid #ccc;}
+		.menu .group li:hover{background:red;}
+		.menu .group li:active{background:red;}
+
+		.logo{float: left; width: 100px; height: 45px;line-height: 45px;}
+
+		.nav{width: 900px; margin: 0px auto;}
+		.nav .nav_a{padding:10px 10px;display: table-cell; color:#fff; cursor:pointer;}
+
+		.icon-group{height:32px; width: 50%;display: inline-block; font-size:14px;}
+		.icon{height:32px;width:32px; display: inline-block; background:#ccc;}
+	</style>
+</head>
+<body class="easyui-layout" data-options="fit:true" ng-controller="index">
+	<div data-options="region:'north'" style="height:45px; background:green;border: 0px;">
+		<div class="logo">
+			<div>UGITC-logo</div>
+		</div>
+		<div class="nav">
+			<a class="nav_a">首页</a>
+			<a class="nav_a">试题</a>
+			<a class="nav_a">试卷</a>
+			<a class="nav_a">管理员</a>
+			<a class="nav_a">用户</a>
+		</div>
+		<div></div>
+		<div style="float: right;height: 35px; position: absolute; right:10px; top:8px;">
+			<span>admin</span>
+			<span>退出</span>
+		</div>
+		<div style="height:1px;width: 100%;background: #ccc;position: absolute; bottom:0px;"></div>
+	</div>
+	<div data-options="region:'center'">
+	
+		<div class="easyui-layout" data-options="fit:true,border:0">
+			<div data-options="region:'north'" style="height: 32px; border:0px;">
+				
+				<div style="font-size: 0px; overflow:hidden; height:32px;">
+					<div class="icon-group">
+						<div class="icon"></div>
+						<div class="icon"></div>
+						<div class="icon"></div>
+					</div>
+					<div class="" style="display: inline-block;width: 50%; height:32px; font-size: 14px;">
+						<div style="float: right;">
+							<input type="text" name="search">搜索
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div data-options="region:'center'">
+				<div class="mygrid"></div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- <div ng-bind="name"></div> -->
+</body>
+<script type="text/javascript">
+	// document.oncontextmenu=function(event){
+	// 	var event = event || window.event;
+	// 	var left=event.pageX,
+	// 		topY=event.pageY;
+	// 	var $test=$(".test");
+	// 	if($test){
+	// 		$test.remove();
+	// 	}
+	// 	var $div=$("<div><p>编辑</p><p>编辑</p><p>编辑</p><p>编辑</p></div>");
+	// 	$div.addClass("test");
+	// 	$div.appendTo($("body"));
+	// 	var h=$(this).height();
+	// 	var x=$(this).outerWidth();
+	// 	targetH=($div.outerHeight()+topY)<h?topY:(topY-$div.outerHeight());
+	// 	targetW=$div.outerWidth()+left>x?(x-$div.outerWidth()) : left;
+	// 	console.log(topY,$div.height(),h,targetH);
+	// 	$div.css({left:targetW,top:targetH+"px"});
+	// 	$div.css({top:targetH});
+	// 	$div.show();
+	// 	return false;
+	// };
+	document.onclick=function(){
+		$(".test").hide();
+	}
+	document.onkeydown=function(){
+		if(event.ctrlKey&&event.key=="f"){
+			console.log("您按下了ctrl+F");
+		}
+		if(event.ctrlKey){
+			return false;
+		}
+		console.log(event.key+"键码"+event.keyCode);
+	}
+	$(".mydiv").click(function(){
+		console.log("click")
+	});
+	$(".mydiv").dblclick(function(){
+		console.log("dblclick");
+	});
+	var data=[{XAT_Code:1},{XAT_Code:2,bbb:33}];
+	$(data).formatRows({bt:"bbb"});
+	console.dir(data);
+</script>
+</html>

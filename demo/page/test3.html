@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox</title>
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+</head>
+<body>
+	<div class="all">
+		<input class="allCheck" type="checkbox" name="">
+	</div>
+	<div class="subCheck">
+		<input class="inp1" type="checkbox" name="name1">
+		<input class="inp2" type="checkbox" name="name2">
+		<input class="inp3" type="checkbox" name="name3">
+		<input class="inp4" type="checkbox" name="name4">
+		<input class="inp5" type="checkbox" name="name5">
+	</div>
+</body>
+<script type="text/javascript">
+	$(".allCheck").click(function(){
+		var isCheck=this.checked;
+		console.log(isCheck);
+		$(".subCheck").find("input[type='checkbox']").prop("checked",isCheck);
+	});
+</script>
+</html>

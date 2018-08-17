@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="../js/extends.js"></script>
+	<style type="text/css">
+		body{background: #1025bc;}
+		.login{width: 300px;height:250px;margin: auto; position: absolute; left: 0;right:0;top:0;bottom:0; display: block;background: -webkit-linear-gradient(left,#1025bc,#90b7f1,#1025bc);background:linear-gradient(to top,#1025bc,#b41616,#1025bc); border-radius: 50px; }
+		.item{width: 240px; margin: 20px;}
+		.item input,.item select{height:24px; font-size: 14px;}
+		input{border-radius:5px; border:1px solid #41357b; color:#41357b; padding:3px 5px;}
+		.item label{margin-top:10px; display: block; }
+		.item label span{display: inline-block;width:60px; font-size: 16px;}
+		.item label .sub{padding:5px 30px; font-size: 16px; border-radius: 5px; height:auto;}
+		table{margin:auto;}
+		table th{height: 60px;font-size: 30px; text-align:center; }
+		table td:first-child{height: 30px; font-size: 14px;}
+		table td input{height:25px;}
+		table td select{height: 27px;}
+		table td input[type="button"]{padding: 10px 30px; height:35px;}
+		table tr:last-child td{height:50px;}
+	</style>
+</head>
+<body>
+	<div class="login">
+		<form action="home5_submit" method="get" accept-charset="utf-8">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">UGITC考试系统</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>用户名:</td>
+						<td><label><input type="text" name="name" value="" placeholder="请输入用户名" /></label></td>
+					</tr>
+					<tr>
+						<td>密码:</td>
+						<td><label><input type="password" name="pwd" value="" placeholder="请输入密码"></label></td>
+					</tr>
+					<tr>
+						<td>类型:</td>
+						<td><label><select name="name">
+								<option value="">学员</option>
+								<option value="">管理员</option>
+							</select></label>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input class="sub" type="button" name="login" value="login"></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<div class="lg"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$("form input[name='login'").click(function(){
+			var params=$(this).closest("form").serializes();
+			if(params.name!==""){
+				window.open("Home6.html");
+			}
+		});
+		
+	});
+</script>
+</html>

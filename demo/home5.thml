@@ -1,0 +1,3 @@
+问题：
+
+Application Server was not connected before run configuration stop, reason: javax.management.AttributeNotFoundException: Cannot find attribute stateName for StandardServer[8005]
