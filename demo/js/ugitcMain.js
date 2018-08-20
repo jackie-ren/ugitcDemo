@@ -59,6 +59,7 @@
 		    fit:true,
 		    // rownumbers:true,//显示行号列
 		    checkbox:true, //显示复选框
+		    striped:true, //是否隔行变色
 		    onClickCell:function(rowIndex, field, value){
 		    	debugger;
 		    },
