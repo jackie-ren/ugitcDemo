@@ -1,4 +1,22 @@
 (function($) {
+	
+	// iframe加载框加载完成的事件
+    $.fn.onIframeLoad = function (callback) {
+        var iframeEle = this.get(0);
+
+        if (iframeEle.attachEvent) {
+            var onload = function(e){
+                callback.apply(e.srcElement, arguments);
+            };
+            iframeEle.attachEvent("onload", onload);
+            this.data()._onload = onload;
+        } else {
+            iframeEle.onload = function(){
+                callback.apply(this, arguments);
+            };
+        }
+        return this;
+    };
 
 	// 数据转化通用格式
 	/**
@@ -68,8 +86,5 @@
 		});
 		return params;
 	};
-	$.fn.validatebox=function(){
-		
-	}
 
 })(jQuery);
