@@ -1,6 +1,23 @@
+@charset "utf-8";
 :root{
 	--color:red;
 	--ccc:;
 }
 div{position:relative;}
 .icon{width: 16px;height:16px; display: inline-block;background: var(--ccc);}
+/*按钮*/
+.btn-fun{ display: inline-block; vertical-align: middle; padding: 5px 27px; border: 1px solid #ccc; font-size: 13px; color: #666}
+.btn-fun:hover{background-color: #ccc;}
+
+
+/*弹框样式设置*/
+.di-a{border:0px;}
+.window{padding:0px;padding: 0;border-width: 0;}
+.window .window-header{padding:0px; height: 32px;}
+.window-header .panel-title{color: #fff;line-height: 35px;height: 32px;box-sizing: border-box;padding-left: 10px;background: #5fbae7;}
+.panel-header .panel-tool .panel-tool-close{background: none;}
+.window .window-body{border: 0px;}
+/*.window .window-header .panel-tool a{width: 14px;height: 14px; margin-top: 3px; margin-right: 10px; background: url('../../../../../../static/image/connect/exit.png') no-repeat;}*/
+.window-footer{position: absolute;bottom: 0;width: 100%;height:60px;border-top: 2px solid #5fbae7;background: #e5e8ea;}
+.window-btn{padding:15px 35px;position: absolute;right: 0;}
+.no-positon{position: inherit;}
