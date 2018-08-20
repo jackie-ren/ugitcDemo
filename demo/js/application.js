@@ -2,7 +2,7 @@
 
         window.app = {
             // 项目路径名称
-            ctx: window.ctx,
+            ctx: window.ctx || "",
             // 当前使用语言数据
             lang: window.appLang,
             // 上层window窗口对象
@@ -154,7 +154,7 @@
                 }
                 //
                 return data;
-            }
+            },
             /**
              *
              * @param data 需要遍历的节点数组
@@ -418,5 +418,4 @@
             },
         };
         window.app.init();
-    }
 })();
