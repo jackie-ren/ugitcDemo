@@ -272,6 +272,77 @@
                 }
             },
             /**
+             * 初始化表单
+             * [initForm description]
+             * @param  {[type]} form       [表单节点]
+             * @param  {[type]} success    [成功回调函数]
+             * @param  {[type]} error      [失败回调函数]
+             * @param  {[type]} beforeSend [提交前处理事件]
+             * @return {[type]}            [description]
+             */
+            initForm: function(form, success, error, beforeSend) {
+                // 覆盖form的submit事件 改为ajax提交
+                success = success || $.noop;
+                error = error || $.noop;
+                beforeSend = beforeSend || $.noop;
+
+                form.submit(function() {
+                    // 存在easyui则调用校验
+                    if(form.form){
+                        // 启用校验并校验
+                        form.form("enableValidation");
+                        if(!form.form("validate")){
+                            return false;
+                        }
+                    }
+
+
+                    var dataArr = form.serializeArray();
+                    // 最终要提交的数据
+                    var data = {};
+                    $(dataArr).each(function(){
+                        data[this.name] = this.value;
+                    });
+                    // 调用提交前回调
+                    var result = beforeSend.call(this, data);
+                    if(result === false){
+                        return false;
+                    }
+
+                    app.commonAjax({
+                        data: data,
+                        loading: true,
+                        url: form.attr("action"),
+                        type: form.attr("method") || "POST",
+                        success: function(data) {
+
+                            // 错误处理
+                            if (data && data.success === false) {
+                                app.showMessage(data.message || app.lang.message.error);
+                                error.call(this, data);
+                            } else {
+                                success.call(this, data);
+                            }
+                        },
+                        error: function() {
+                            app.showMessage(app.lang.message.error);
+                            error.apply(this, arguments);
+                        }
+                    });
+                    return false;
+                });
+                // 存在easyui则调用校验相关方法
+                if(form.form){
+                    form.form("disableValidation");
+                    form.find(".validatebox-text").blur(function() {
+                        $(this).validatebox("enableValidation").validatebox("validate");
+                    }).each(function(){
+                        $(this).validatebox("options").tipPosition = "bottom";
+                    });
+                }
+
+            },
+            /**
              * 初始化
              * @createBy TanYong
              * @createDate 2015-06-23
