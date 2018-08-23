@@ -8,6 +8,12 @@ div{position:relative;}
 /*按钮*/
 .btn-fun{ display: inline-block; vertical-align: middle; padding: 5px 27px; border: 1px solid #ccc; font-size: 13px; color: #666}
 .btn-fun:hover{background-color: #ccc;}
+/*按钮 end*/
+/*公用样式 start*/
+.u-right,.f_r{float: right;}
+.u-left,.f_l{float: left;}
+
+/*公用样式 end*/
 
 
 /*弹框样式设置*/
