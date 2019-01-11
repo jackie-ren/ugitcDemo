@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>checkbox</title>
 	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+
 </head>
 <body>
 	<div class="all">
@@ -16,6 +17,7 @@
 		<input class="inp4" type="checkbox" name="name4">
 		<input class="inp5" type="checkbox" name="name5">
 	</div>
+	<?php echo "Hello?>
 </body>
 <script type="text/javascript">
 	$(".allCheck").click(function(){
@@ -23,5 +25,32 @@
 		console.log(isCheck);
 		$(".subCheck").find("input[type='checkbox']").prop("checked",isCheck);
 	});
+	var obj={key:3};
+	Object.defineProperty(obj, "key", {
+		set:function(value){
+			debugger;
+		}
+	});
+	setTimeout(function(){
+		obj.key=4;
+	}, 2000);
+
+	function compileStr(code){ //对字符串进行加密       
+	  	var c=String.fromCharCode(code.charCodeAt(0)+code.length);
+	 	for(var i=1;i<code.length;i++){      
+	   		c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));
+	 	}   
+	 return escape(c);  
+	}
+	 //字符串进行解密 
+	function uncompileStr(code){      
+	  	code=unescape(code);      
+	  	var c=String.fromCharCode(code.charCodeAt(0)-code.length);      
+	 	for(var i=1;i<code.length;i++){      
+	  		c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));      
+	 	}      
+	  	return c;
+	}
+
 </script>
 </html>

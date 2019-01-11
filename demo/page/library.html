@@ -3,10 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>add library</title>
+	<link rel="stylesheet" type="text/css" href="../themes/bootstrap/easyui.css">
 	<link rel="stylesheet" type="text/css" href="../css/reset.css">
 	<link rel="stylesheet" type="text/css" href="../css/ugitc.css">
+
 	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
 	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../js/application.js"></script>
+	<script type="text/javascript" src="../js/extends.js"></script>
 	<style type="text/css">
 		textarea{width: 200px;height: 50px;}
 		table{width: 300px;margin:auto;}
@@ -18,8 +22,8 @@
 		td label input[type='radio']{vertical-align: middle; margin-right: 5px; margin-bottom: 2px;background:red;}
 	</style>
 </head>
-<body>
-	<div class="">
+<body class="easyui-layout" data-options="fit:true" style="height: 100%;">
+	<div class="" data-options="region:'center'">
 		<form>
 			<table>
 				<tbody>
@@ -42,5 +46,27 @@
 			</table>
 		</form>
 	</div>
+	<div data-options="editable:false,required:true,region:'south',border:false" style="height: 62px;">
+	    <div class="window-footer no-positon">
+	        <div class="window-btn">
+	            <a class="btn-fun js_sure">确定</a>
+	            <a class="btn-fun close">取消</a>
+	        </div>
+	    </div>
+	</div>
 </body>
+<script type="text/javascript">
+	window.windowHW={width:450,height:400}
+	app.iframeLoad(function(){
+		app.initForm($("form"),function(data){
+			// 提交成功
+			window.dialogReturn = true;
+			app.showAlert(app.lang.message.success, function(){
+			    $(".close").click();
+			});
+		},null,function(){
+			// 提交前回调
+		});
+	});
+</script>
 </html>

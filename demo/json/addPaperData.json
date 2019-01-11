@@ -1,0 +1,47 @@
+[
+{
+    "type": "textbox",
+    "prompt": "请输入章节名称",
+    "data": []
+},
+{
+    "type": "textbox",
+    "prompt": "请输入章节描述"
+},
+{
+    "type": "combobox",
+    "prompt": "请选择题库"
+},
+{
+    "type": "combobox",
+    "prompt": "请选择题型"
+},
+{
+    "type": "numberbox",
+    "level": "试题数量"
+},
+{
+    "type": "numberbox",
+    "level": "每题分值"
+}]
+
+
+{
+    "eName":"考试名称", 
+    "eStatus":"考试状态id",
+    "eStarttime": "开始时间",
+    "eEndtime":"截止时间",
+    "eTime": "考试时长",
+    "totalScore": "总分",
+    "passScore": "及格分数",
+    "remark":"备注",
+    "chapters":[
+    {
+        "chptName": "章节名称",
+        "descripton":"描述内容",
+        "qdbId": "选择的题库id",
+        "qType":"选择的题型id",
+        "quantity":"试题数量",
+        "score":"每题分值"
+    }]
+}

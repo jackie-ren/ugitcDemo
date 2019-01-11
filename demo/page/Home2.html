@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="ugang" id="ng-app">
 <head>
+	<meta charset="utf-8">
 	<title>home2 右键菜单</title>
 	<link rel="stylesheet" type="text/css" href="./../themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="./../themes/icon.css">
@@ -103,27 +104,27 @@
 </body>
 <script type="text/javascript">
 	// $(".contextmenu")[0].oncontextmenu=function(event){
-	// document.oncontextmenu=function(event){
-	// 	var event = event || window.event;
-	// 	var left=event.pageX,
-	// 		topY=event.pageY;
-	// 	var $test=$(".test");
-	// 	if($test){
-	// 		$test.remove();
-	// 	}
-	// 	var $div=$("<div><p>添加</p><p>编辑</p><p>删除</p><p>上传用户</p></div>");
-	// 	$div.addClass("test");
-	// 	$div.appendTo($("body"));
-	// 	var h=$(this).height();
-	// 	var x=$(this).outerWidth();
-	// 	targetH=($div.outerHeight()+topY)<h?topY:(topY-$div.outerHeight());
-	// 	targetW=$div.outerWidth()+left>x?(x-$div.outerWidth()) : left;
-	// 	console.log(topY,$div.height(),h,targetH);
-	// 	$div.css({left:targetW,top:targetH+"px"});
-	// 	$div.css({top:targetH});
-	// 	$div.show();
-	// 	return false;
-	// };
+	document.oncontextmenu=function(event){
+		var event = event || window.event;
+		var left=event.pageX,
+			topY=event.pageY;
+		var $test=$(".test");
+		if($test){
+			$test.remove();
+		}
+		var $div=$("<div><p>添加</p><p>编辑</p><p>删除</p><p>上传用户</p></div>");
+		$div.addClass("test");
+		$div.appendTo($("body"));
+		var h=$(this).height();
+		var x=$(this).outerWidth();
+		targetH=($div.outerHeight()+topY)<h?topY:(topY-$div.outerHeight());
+		targetW=$div.outerWidth()+left>x?(x-$div.outerWidth()) : left;
+		console.log(topY,$div.height(),h,targetH);
+		$div.css({left:targetW,top:targetH+"px"});
+		$div.css({top:targetH});
+		$div.show();
+		return false;
+	};
 	document.onclick=function(){
 		$(".test").hide();
 	}
@@ -141,6 +142,6 @@
 	});
 	$(".mydiv").dblclick(function(){
 		console.log("dblclick");
-	})
+	});
 </script>
 </html>

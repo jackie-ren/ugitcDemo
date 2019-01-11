@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="paper">
 <head>
 	<meta charset="UTF-8">
 	<title>考试试卷设计</title>
@@ -11,6 +11,12 @@
 		body{background: #1227bd;}
 		.theme{width:980px; margin: auto;background: -webkit-linear-gradient(left,#1025bccf,#90b7f1,#1025bccf);}
 		.item{padding-left:10px;}
+		.option-group{padding:10px;}
+		.topic{padding: 5px;}
+		.topic_option{padding: 5px;background: green; display: inline-block;  vertical-align: middle;}
+		.topic_otpion input{margin: 5px 10px;}
+		.topic_option--layout{padding:5px 10px; vertical-align: middle;}
+
 		.option-group .item{padding-left:10px; display: inline-block;vertical-align:middle;}
 		.option-group .item label{display: block;padding:5px 10px;}
 		.option-group .item label input{vertical-align: middle; margin-left: 5px;}
@@ -18,8 +24,17 @@
 	</style>
 </head>
 <body>
-	<div class="theme">
+	<div class="theme" ng-controller="paperPage">
 		<form>
+			<div class="group" ng-repeat="items in data">
+				<h1 ng-bind="items.module"></h1>
+				<div class="option-group" ng-repeat="per in items.data">
+					<p class="topic">{{per.a}}</p>
+					<div class="topic_option" ng-repeat="options in per.options">
+						<label class="topic_option--layout">{{options.option}} <input type="{{options.type}}" name="codeId" value="{{options.option}}"> {{options.value}}</label>
+					</div>
+				</div>
+			</div>
 			<div class="group">
 				<h1>1.选择题</h1>
 				<div class="item">
@@ -73,23 +88,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="item">
-					<p>2.计算3+4=?()</p>
-					<div class="option-group">
-						<div class="item">
-							<label>A.<input type="checkbox" name="codeId4" value="A"><img src="" alt=""></label>
-						</div>
-						<div class="item">
-							<label>B.<input type="checkbox" name="codeId4" value="B"><img src="" alt=""></label>
-						</div>
-						<div class="item">
-							<label>C.<input type="checkbox" name="codeId4" value="C"><img src="" alt=""></label>
-						</div>
-						<div class="item">
-							<label>D.<input type="checkbox" name="codeId4" value="D"><img src="" alt=""></label>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div style="text-align: center; padding: 5px 30px;">
 				<input style="padding: 5px 20px;" type="button" value="提交">
@@ -99,71 +97,77 @@
 	</div>
 </body>
 <script type="text/javascript">
-	var data=[
-		{
-			module:"选择题",
-			codeId:"试题编号",
-			score:"分值",
-			img:"图片路径",
-			data:[
+	(function(){
+		var paper=angular.module("paper",[]);
+		paper.controller("paperPage",["$scope","$element",function($scope,$element){
+			$scope.data=[
 				{
-					a:"第一题",
+					module:"选择题",
 					codeId:"试题编号",
 					score:"分值",
 					img:"图片路径",
-					options:[
+					data:[
 						{
-							option:"A",
-							value:"value",
-							type:"radio",
-							showType:"text||img",
-							img:"img"
-						},
+							a:"第一题",
+							codeId:"试题编号",
+							score:"分值",
+							img:"图片路径",
+							options:[
+								{
+									option:"A",
+									value:"value",
+									type:"radio",
+									showType:"text||img",
+									img:"img"
+								},
+								{
+									option:"B",
+									value:"value",
+									type:"radio",
+									showType:"text||img",
+									img:"img"
+								},
+								{
+									option:"C",
+									value:"value",
+									type:"radio",
+									showType:"text||img",
+									img:"img"
+								},
+								{
+									option:"D",
+									value:"value",
+									type:"radio",
+									showType:"text||img",
+									img:"img"
+								}
+							]
+						}
+					]
+				},{
+					module:"多选题",
+					codeId:"试题编号",
+					score:"分值",
+					img:"图片路径",
+					data:[
 						{
-							option:"B",
-							value:"value",
-							type:"radio",
-							showType:"text||img",
-							img:"img"
-						},
-						{
-							option:"C",
-							value:"value",
-							type:"radio",
-							showType:"text||img",
-							img:"img"
-						},
-						{
-							option:"D",
-							value:"value",
-							type:"radio",
-							showType:"text||img",
-							img:"img"
+							a:"第一题",
+							img:"img",
+							options:[
+								{
+									option:"a",
+									value:"value",
+									type:"checkbox",
+									showType:"text||img",
+									img:"img"
+								}
+							]
 						}
 					]
 				}
-			]
-		},{
-			module:"多选题",
-			codeId:"试题编号",
-			score:"分值",
-			img:"图片路径",
-			data:[
-				{
-					a:"第一题",
-					img:"img",
-					options:[
-						{
-							option:"a",
-							value:"value",
-							type:"cobox",
-							showType:"text||img",
-							img:"img"
-						}
-					]
-				}
-			]
-		}
-		];
+				];
+		}]);
+	})();
+	
 </script>
 </html>

@@ -342,6 +342,9 @@
                 }
 
             },
+            addQuest：function(){
+                
+            }
             /**
              * 初始化
              * @createBy TanYong

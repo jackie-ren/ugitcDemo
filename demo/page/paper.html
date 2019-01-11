@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加试卷</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<style type="text/css">
+		.paper{background: green; width: 800px;height:500px; padding-top: 1px;}
+		.item{margin-top:10px;}
+		.item .title{display: inline-block; vertical-align: middle;width: 100px; background: #ccc; font-size: 14px;text-align: right;line-height: 20px; padding-right: 10px; box-sizing: border-box;}
+		.item .text{display: inline-block; vertical-align: middle;}
+		.item input,.item select{box-sizing: border-box; padding: 3px 5px; font-size: 14px;}
+		a.btn{padding: 10px 20px; color: #fff; background: #ccc; border-radius:5px;}
+		a.btn:hover{background: #DDD; cursor:pointer;}
+
+		.text-item{width: 636px; margin-top:10px;}
+		.close{ display: inline-block;line-height: 20px; width: 20px;border: 5px solid transparent; text-align: center; vertical-align: middle; cursor:pointer;}
+		.close:hover{color:#ff0000; font-size: 16px;}
+	</style>
+</head>
+<body class="easyui-layout" data-options="fit:true">
+	<div class="window">
+		<div class="paper">
+			<div class="item">
+				<div class="title">试卷名称</div>
+				<div class="text"><input class="easyui-textbox" data-options="required:true" placeholder=""></div>
+			</div>
+			<div class="item">
+				<div class="title">试卷状态</div>
+				<div class="text"><select name="state">
+					<option value="1">开放</option>
+					<option value="2">不开放</option>
+				</select></div>
+			</div>
+			<div class="item">
+				<div class="title">
+					开始时间
+				</div>
+				<div class="text date">
+					<input class="easyui-datetimebox" >
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">
+					结束时间
+				</div>
+				<div class="text date">
+					<input class="easyui-datetimebox" >
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">
+					考试时长
+				</div>
+				<div class="text">
+					<input class="easyui-textbox" data-options="required:true">
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">
+					备注
+				</div>
+				<div class="text">
+					<input class="easyui-textbox">
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">
+					章节设定
+				</div>
+				<div class="text">
+					<a class="btn">添加章节</a>
+					<form action="">
+						<div class="text-item">
+							<input class="easyui-textbox" data-options="prompt:'请输入章节名称'">
+							<input class="easyui-textbox" data-options="prompt:'请输入章节描述'">
+							<select class="easyui-combobox" name="dept" data-options="multiple:true,prompt:'请选择题库'" style="width:200px;">   
+							    <option>bitem2</option>   
+							    <option>bitem3</option>   
+							    <option>ditem4</option>   
+							    <option>eitem5</option>   
+							    <option>eitem6</option>  
+							</select>
+							<input class="easyui-combobox" data-options="prompt:'请选择试题'">
+							<input class="easyui-numberbox" data-options="min:0,prompt:'请选择数量'">
+							<input class="easyui-numberspinner" data-options="min:0,prompt:'请选择分值'">
+							<span class="close" click="close()">X</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	// getIsPublic 试卷是否公开
+	var $form;
+	$("a.btn").click(function(){
+		var form=$(this).next("form");
+		!$form?$form=$(this).next("form").clone():"";
+		$(this).closest(".text").append($form);
+		console.log("click");
+	});
+	$(".close").click(function close(){
+		$(this).closest("form").remove();
+	})
+</script>
+</html>

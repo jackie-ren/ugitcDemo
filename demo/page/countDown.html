@@ -21,7 +21,7 @@
 		var count=16;
 		var setTime="";
 		var $down=$(".down");
-		function countDown(count){
+		function countDown(count,jq){
 			if(minute==0&&count==0){
 				alert("时间到");
 				// setTimeout(function(){alert("shijiandao")},200)
@@ -33,12 +33,11 @@
 				count--;
 				var Down=count;
 				var str="剩余"+minute+"分钟"+Down+"秒";
-				$down.text(str);
-				setTime=setTimeout(function(){countDown(count)},1000)
+				jq.text(str);
+				setTime=setTimeout(function(){countDown(count,jq)},1000)
 			}
 		}
-		countDown(count);
-
+		countDown(count,$down);
 	})();
 </script>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>添加试题</title>
+	<title>添加修改试题</title>
 	<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/ugitc.css"/>
 	<script type="text/javascript" src="../js/jquery-2.0.3.js"></script>
@@ -118,6 +118,28 @@
 			this.createDOM();
 			this.reset();
 		},
+		obtain:function(){
+			var key="";
+			var option=[];
+			var nexts
+			if(this.isJudge){
+				nexts=$(".judge").children();
+			}else{
+				nexts=$("."+this.parentClass).children(".item");
+			}
+			$(nexts).each(function(){
+				var obj={};
+				obj.key=$(this).find("input").eq(0).val();
+				obj.value=$(this).find("input").eq(1).val();
+				option.push(obj);
+			});
+
+			keys=nexts.find("input:checked").map(function(){
+				return this.value;
+			}).get().join(",");
+			return {keys:keys,option:option};
+		},
+		// 多选题和单选题选项
 		createDOM:function(){
 			if(this.count==this.option.length){
 				alert("已经是最大数量选项!");
@@ -139,6 +161,7 @@
 			str+="<input class='textInput' type='text' name='"+name+"'><span class='btn-x'>X</span>";
 			$("."+this.parentClass).append(str);
 		},
+		// 判断题选项
 		createJudge:function(){
 			var str="";
 			for(var i=0;i<this.judges.length;i++){
@@ -165,6 +188,7 @@
 				$(option).prev("input").val(addOpts.option[index]);
 			});
 		},
+		// 移除所有选项
 		removeOption:function(){
 			$("."+this.parentClass).children().remove();
 			$(".judge").children().remove();
@@ -174,6 +198,7 @@
 			if(!type){
 				return;
 			}
+			this.isJudge=!this.type||false;
 			if(this.isJudge || !this.type){
 				this.createJudge();
 			}else{

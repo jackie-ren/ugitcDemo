@@ -24,13 +24,46 @@
 		        }    
 		    }]
 		});
+		// $.jsonp({
+		// 	url:"http://localhost:8080/questionDB/list?callback=?",
+		// 	success:function(data){
+		// 		debugger;
+		// 	},
+		// 	error:function(){
+		// 		debugger;
+		// 	}
+		// });
+		
+		//jsonp 方式跨域请求数据
+		// $.ajax({
+		// 	url:"http://192.168.1.53:8080/questionDB/save?callback=?&dname=test&remark=test&status=0&_=1535336842352",
+		// 	dataType:"jsonp",
+		// 	success:function(data){
+		// 		debugger;
+		// 	},
+		// 	error:function(){
+		// 		debugger;
+		// 	}
+		// });
+
+		// $.ajax({
+		// 	url:"http://192.168.1.53:8080/questionDB/list?callback=?&a=3",
+		// 	dataType:"jsonp",
+		// 	success:function(data){
+		// 		debugger;
+		// 	},
+		// 	error:function(){
+		// 		debugger;
+		// 	}
+		// });
+
 		//,filtrate:true赛选
 		$mygrid.datagrid({
 			columns:[[
 			{field:'ck',checkbox:true},
 		        {field:'code',title:'Code',width:200,align:'center'},    
 		        {field:'name',title:'Name',width:100,align:'center'},    
-		        {field:'price',title:'Price',width:100,align:'center'}    
+		        {field:'price',title:'Price',width:100,align:'center',sortable:true}    
 		    ]],
 		    data:[
 		    	{code:1,name:"a",price:13},
@@ -70,7 +103,6 @@
 		    	if(call.search){
 		    		var tmenu = $('<div style="width:100px;"></div>').appendTo('body');
 		    	}
-		    	debugger;
 		    },
 		    onRowContextmenu:function(e,rowIndex,rowData){
 		    	console.log(rowIndex);

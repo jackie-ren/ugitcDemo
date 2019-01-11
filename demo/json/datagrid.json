@@ -1,4 +1,6 @@
 {
+	success:true,
+	total:20,
 	data:[
 		{name:"a",title:"a"},
 		{name:"b",title:"b"},
